@@ -222,7 +222,7 @@ class NodeTestCases(unittest.TestCase):
                                     **kwargs)
         self.assertIsInstance(node, SynapseUsNode)
         self.assertEqual(self.user.id, node.user.id)
-        for prop in kwargs:
+        for prop in kwargs:a
             self.assertIsNotNone(getattr(node, prop))
 
         other_props = ['user', 'nickname', 'id', 'type', 'is_active',
@@ -350,7 +350,7 @@ class NodeTestCases(unittest.TestCase):
             'address_city': 'SAN FRANCISCO',
             'address_subdivision': 'CA',
             'address_country_code': 'US',
-            'address_postal_code':  '94105' 
+            'address_postal_code':  '94105'
         }
         node = CheckUsNode.create(self.user, **kwargs)
         self.assertIsInstance(node, CheckUsNode)
@@ -471,7 +471,7 @@ class NodeTestCases(unittest.TestCase):
         base_document = user.add_base_document(**base_doc_args)
         time.sleep(10)
         doc_id = base_document.id
-        
+
         kwargs = {
             'nickname': 'Python Test CARD-US Account',
             'document_id': str(doc_id),

@@ -27,7 +27,7 @@ class HttpClient():
         """Update the supplied properties on self and in the header dictionary.
         """
         header_options = ['client_id', 'client_secret', 'fingerprint',
-                          'ip_address', 'oauth_key']
+                          'ip_address', 'oauth_key']    
         for prop in header_options:
             if kwargs.get(prop) is not None:
                 setattr(self, prop, kwargs.get(prop))

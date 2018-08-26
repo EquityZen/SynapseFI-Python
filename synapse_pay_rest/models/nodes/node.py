@@ -22,7 +22,7 @@ from .card_us_node import CardUsNode
 from .subcard_us_node import SubcardUsNode
 
 
-class Node():
+class Node(object):
     """Factory for producing the various node types.
 
     The actual node subclasses descend from BaseNode, but the factory is named

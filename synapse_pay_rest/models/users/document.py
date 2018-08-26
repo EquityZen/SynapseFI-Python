@@ -1,4 +1,4 @@
-class Document():
+class Document(object):
     """Ancestor of PhysicalDocument, SocialDocument, and VirtualDocument.
 
     Stores common functionality of child classes, but should not be
@@ -29,8 +29,8 @@ class Document():
                    id=response['id'],
                    status=response['status'],
                    last_updated=response['last_updated'],
-                   meta=response.get('meta',None),
-                   document_value=response.get('document_value',None))
+                   meta=response.get('meta', None),
+                   document_value=response.get('document_value', None))
 
     @classmethod
     def multiple_from_response(cls, response):

@@ -7,11 +7,11 @@ class CardUsNode(BaseNode):
     @classmethod
     def payload_for_create(cls, nickname, document_id, card_type, **kwargs):
         """Build the API 'create node' payload specific to CARD-US."""
-        payload = super().payload_for_create('CARD-US',
-                                             nickname=nickname,
-                                             document_id=document_id,
-                                             card_type=card_type,
-                                             **kwargs)
+        payload = super(CardUsNode, cls).payload_for_create('CARD-US',
+                                                            nickname=nickname,
+                                                            document_id=document_id,
+                                                            card_type=card_type,
+                                                            **kwargs)
         return payload
 
     def update_preferences(self, **kwargs):
@@ -40,7 +40,8 @@ class CardUsNode(BaseNode):
         }
 
         if 'allow_foreign_transactions' in kwargs:
-            payload['preferences']['allow_foreign_transactions'] = kwargs['allow_foreign_transactions']
+            payload['preferences']['allow_foreign_transactions'] = kwargs[
+                'allow_foreign_transactions']
         if 'atm_withdrawal_limit' in kwargs:
             payload['preferences']['atm_withdrawal_limit'] = kwargs['atm_withdrawal_limit']
         if 'max_pin_attempts' in kwargs:
@@ -50,4 +51,3 @@ class CardUsNode(BaseNode):
         if 'security_alerts' in kwargs:
             payload['preferences']['security_alerts'] = kwargs['security_alerts']
         return payload
-

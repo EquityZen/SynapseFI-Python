@@ -31,11 +31,11 @@ class AchUsNode(BaseNode):
             list: if no MFA, returns a list of AchUsNodes
             AchUsNode: if MFA, returns an AchUsNode with mfa_verified=False
         """
-        payload = super().payload_for_create('ACH-US',
-                                             bank_name=bank_name,
-                                             username=username,
-                                             password=password,
-                                             mfa_verified=True)
+        payload = super(AchUsNode, cls).payload_for_create('ACH-US',
+                                                           bank_name=bank_name,
+                                                           username=username,
+                                                           password=password,
+                                                           mfa_verified=True)
         response = user.client.nodes.create(user.id, payload)
         if 'mfa' in response:
             # create unverified node
@@ -48,13 +48,13 @@ class AchUsNode(BaseNode):
     def payload_for_create(cls, nickname, account_number, routing_number,
                            account_type, account_class, **kwargs):
         """Build the API 'create node' payload specific to ACH-US."""
-        payload = super().payload_for_create('ACH-US',
-                                             nickname=nickname,
-                                             account_number=account_number,
-                                             routing_number=routing_number,
-                                             account_type=account_type,
-                                             account_class=account_class,
-                                             **kwargs)
+        payload = super(AchUsNode, cls).payload_for_create('ACH-US',
+                                                           nickname=nickname,
+                                                           account_number=account_number,
+                                                           routing_number=routing_number,
+                                                           account_type=account_type,
+                                                           account_class=account_class,
+                                                           **kwargs)
         return payload
 
     def verify_microdeposits(self, amount1, amount2):
